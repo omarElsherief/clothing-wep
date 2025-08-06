@@ -1,23 +1,25 @@
 // Header Component
-import { Link, useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "../shared/Home.css"; 
 import logo from "../../assets/flower.png";
 import cartImage from "../../assets/shopping-cart_17641476.png";
 import mopileMenu from "../../assets/line_9694578.png";
+import { logout } from "../../store/authSlice"; 
 
 
 
 
-// import { logout } from "../store/authSlice"; // Import logout action
 const Header = () => {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLogedIn = useSelector((state) => state.auth.isAuthenticated);
 
-  // const handleLogout = () => {
-  //   dispatch(logout()); // Clear Redux state
-  //   navigate("/login", { replace: true }); // Redirect to login
-  // };
+  const handleLogout = () => {
+    dispatch(logout()); // Clear Redux state
+    navigate("/"); 
+  };
 
   return (
     <header className="header">
@@ -41,9 +43,11 @@ const Header = () => {
             <li><Link to="/" className="nav_link">Home</Link></li>
             <li><Link to="/shopping" className="nav_link">Shopping</Link></li>
             <li><Link to="/about" className="nav_link">About</Link></li>
-            {/* <li><Link to="/contact" className="nav_link">Contact Us</Link></li> */}
-            {/* <li>
-              <Link
+            <li><Link to="/contact" className="nav_link">Contact Us</Link></li>
+            <li>
+              {
+                isLogedIn ? (
+                  <Link
                 to="#"
                 className="nav_link"
                 onClick={(e) => {
@@ -53,7 +57,12 @@ const Header = () => {
               >
                 Logout
               </Link>
-            </li> */}
+                ) : (
+                  <Link to="/login" className="nav_link">Login</Link>
+                )
+              }
+              
+            </li>
           </ul>
         </nav>
 

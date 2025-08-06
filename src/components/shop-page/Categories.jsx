@@ -71,6 +71,7 @@ function Category() {
                 <option value="womens-shoes">Womens Shoes</option>
                 <option value="womens-bags">Womens Bags</option>
                 <option value="womens-dresses">Womens Dresses</option>
+                <option value="womens-watches">Women Watches</option>
             </select>
             <Products products={products} />
         </div>
