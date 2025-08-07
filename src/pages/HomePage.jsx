@@ -16,6 +16,15 @@ import handbagIcon from '../assets/hand-bag_4217321.png';
 import collection1 from '../assets/colldre.jpg';
 import collection2 from '../assets/collec2.jpg';
 import collection3 from '../assets/collect.jpg';
+import saleWomanImg from '../assets/lovely-shopping-woman-smiling-wearing-hat-isolated-green-background.jpg';
+import vectorImg from '../assets/Vector.png';
+import moneyImg from '../assets/money.png';
+import lockImg from '../assets/lock 01.png';
+import callImg from '../assets/call.png';
+import manImg from '../assets/man2.jpg';
+import kidImg from '../assets/kid-studio-portrait-isolated.jpg';
+import girlImg from '../assets/girl.jpg';
+import womenImg from '../assets/women.png';
 
 
 // Hero Section
@@ -106,20 +115,119 @@ const Home = () => {
   //     }
   //   };
   // }, []);
+const CountdownSection = () => {
+  useEffect(() => {
+    const countdownElement = document.getElementById("countdown");
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
 
+    const targetDate = new Date("2025-12-31T23:59:59").getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        if (countdownElement) countdownElement.innerHTML = "Offer expired";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (daysEl) daysEl.innerHTML = days;
+      if (hoursEl) hoursEl.innerHTML = hours;
+      if (minutesEl) minutesEl.innerHTML = minutes;
+      if (secondsEl) secondsEl.innerHTML = seconds;
+    };
+
+    const timer = setInterval(updateCountdown, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section>
+      <div className="timer">
+        <div className="content">
+          <div className="promotion">PROMOTION</div>
+          <h2>Hurry up! 40% OFF</h2>
+          <p>Thousands of high tech are waiting for you</p>
+          <div>Offer expires in:</div>
+          <div className="countdown" id="countdown">
+            <div className="time-box" id="days">02</div>
+            <div className="time-box" id="hours">12</div>
+            <div className="time-box" id="minutes">45</div>
+            <div className="time-box" id="seconds">05</div>
+          </div>
+          <Link to={"/shopping"} className="btn">Shop now</Link>
+        </div>
+        <div className="image-section">
+          <img src={saleWomanImg} alt="Sale" />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+  const ExtraSections = () => (
+  <>
+    <CountdownSection />
+    
+    {/* Services */}
+    <section>
+      <div className="services">
+        {[
+          { img: vectorImg, title: "Free Shipping", desc: "Order above $200" },
+          { img: moneyImg, title: "Money-back", desc: "30 days guarantee" },
+          { img: lockImg, title: "Secure Payments", desc: "Secured by Stripe" },
+          { img: callImg, title: "24/7 Support", desc: "Phone and Email support" }
+        ].map((service, index) => (
+          <div className="service" key={index}>
+            <div className="icon"><img src={service.img} alt="" /></div>
+            <h4 className="title">{service.title}</h4>
+            <p className="desc">{service.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Newsfeed */}
+    <section>
+      <div className="contanier-social">
+        <div className="content-social">
+          <span>newsfeed</span>
+          <h2>Instagram</h2>
+          <p>Follow us on social media for more discount & promotions</p>
+          <div className="link"><a href="#">@Fashion_official</a></div>
+        </div>
+        <div className="image-social">
+          <img src={manImg} alt="Man fashion" />
+          <img src={kidImg} alt="Kid fashion" />
+          <img src={girlImg} alt="Girl fashion" />
+          <img src={womenImg} alt="Women fashion" />
+        </div>
+      </div>
+    </section>
+
+
+    
+  </>
+);
   return (
     <>
       <HeroSection />
-
-      {/* Product Icons with white background */}
       <div className="products-icons-container">
         <ProductIcons />
       </div>
-
-      {/* Collection with white background */}
       <div className="collection-container">
         <Collection />
       </div>
+      <ExtraSections />
     </>
   );
 };

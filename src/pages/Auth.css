@@ -1,5 +1,5 @@
-body.auth-background {
-  background-image: url('../assets/9701606.jpg');
+.auth-background {
+  background-image: url('../assets/authbg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+// src/components/Register.jsx
+import React, { useState } from 'react';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import './Auth.css';
 
@@ -8,16 +9,9 @@ const Register = ({ onLoginClick }) => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
 
-  
-  useEffect(() => {
-    document.body.classList.add('auth-background');
-    return () => {
-      document.body.classList.remove('auth-background');
-    };
-  }, []);
-
   const validate = () => {
     const newErrors = {};
+
     if (!username.trim()) newErrors.username = 'Username is required';
     else if (username.length < 3) newErrors.username = 'At least 3 characters';
 
@@ -41,7 +35,7 @@ const Register = ({ onLoginClick }) => {
       setErrors(newErrors);
     } else {
       const users = JSON.parse(localStorage.getItem('users')) || [];
-      if (users.some(u => u.username === username)) {
+      if (users.some((u) => u.username === username)) {
         alert('Username already exists!');
         return;
       }
@@ -51,13 +45,14 @@ const Register = ({ onLoginClick }) => {
       localStorage.setItem('users', JSON.stringify(updatedUsers));
 
       alert('Registration successful! You can now log in.');
-      onLoginClick();
+      onLoginClick(); // Switch to login screen
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h1>Registration</h1>
+
       <div className="input-box">
         <input
           type="text"
@@ -105,7 +100,15 @@ const Register = ({ onLoginClick }) => {
       <div className="register-link">
         <p>
           Already have an account?{' '}
-          <a href="#" onClick={onLoginClick}>Login</a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              onLoginClick();
+            }}
+          >
+            Login
+          </a>
         </p>
       </div>
     </form>

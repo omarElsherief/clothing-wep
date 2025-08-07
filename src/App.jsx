@@ -13,7 +13,8 @@ import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { useEffect } from "react"
 import { initializeCart } from "./store/cartSlice"
-
+import ContactForm from "./pages/ContactForm"
+import MainContact from "./pages/MainContact"
 
 
 const routes = [
@@ -23,7 +24,8 @@ const routes = [
       {path: "shopping", element: <ShoppingPage />},
       { path: "about", element: <AboutPage /> },
     { path: "product/:id", element: <ProductPage /> },
-    { path: "contact", element: <p>Contact us</p> },
+    { path: "contact-form", element: <ContactForm /> },
+    {path:"contact", element:<MainContact />},
     { path: "shopping-cart", element: <ShoppingCart /> }
   ],
   },
