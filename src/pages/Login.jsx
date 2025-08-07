@@ -4,6 +4,7 @@ import { FaUser, FaLock } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../store/authSlice';
+import { initializeCart } from '../store/cartSlice';
 import "./Login_register.css";
 import "./Auth.css";
 
@@ -24,6 +25,7 @@ const Login = ({ onRegisterClick, onForgotPassword }) => {
 
     if (matchedUser) {
       dispatch(login(matchedUser));
+      dispatch(initializeCart(matchedUser.username)); 
       navigate('/');
     } else {
       alert('Invalid credentials!');

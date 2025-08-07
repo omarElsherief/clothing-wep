@@ -59,7 +59,6 @@ const Header = () => {
                 className="nav_link"
                 onClick={(e) => {
                   e.preventDefault(); // Prevent default link behavior
-                  dispatch(clearCart());
                   handleLogout();
                 }}
               >
@@ -79,7 +78,7 @@ const Header = () => {
         <button onClick={()=> isLogedIn ? navigate('/shopping-cart') : navigate('/login')} className="cart-icon">
           <img src={cartImage} alt="Cart" width="60px" height="50px" className='cursor-pointer' />
         </button>
-          <span className='absolute -top-2 -right-2 bg-[#e91e63] text-white text-sm min-w-[20px] h-[20px] rounded-full flex items-center justify-center px-1'>{cartItems||"0"}</span>
+          <span className='absolute -top-2 -right-2 bg-[#e91e63] text-white text-sm min-w-[20px] h-[20px] rounded-full flex items-center justify-center px-1'>{isLogedIn?cartItems||"0":""}</span>
         </div>
       </div>
     </header>

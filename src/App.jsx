@@ -9,7 +9,10 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Login_register from "./pages/Login_register"
 import ShoppingCart from "./pages/ShoppingCart"
-
+import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { initializeCart } from "./store/cartSlice"
 
 
 
@@ -31,6 +34,14 @@ const routes = [
 const router = createBrowserRouter(routes);
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    if (user?.username) {
+      dispatch(initializeCart(user.username));
+    }
+  }, [dispatch, user]);
   
   return (
     <>
