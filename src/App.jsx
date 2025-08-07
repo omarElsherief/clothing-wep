@@ -8,6 +8,7 @@ import ShoppingPage from "./pages/ShoppingPage"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Login_register from "./pages/Login_register"
+import ShoppingCart from "./pages/ShoppingCart"
 
 
 
@@ -19,7 +20,8 @@ const routes = [
       {path: "shopping", element: <ShoppingPage />},
       { path: "about", element: <AboutPage /> },
     { path: "product/:id", element: <ProductPage /> },
-    {path:"contact",element:<p>Contact us</p>}
+    { path: "contact", element: <p>Contact us</p> },
+    { path: "shopping-cart", element: <ShoppingCart /> }
   ],
   },
   { path: "/login", element: <Login_register /> },

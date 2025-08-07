@@ -1,7 +1,8 @@
 import { Heart } from "lucide-react";
 import { useState } from "react";
+import CartBtn from "../shared/CartBtn";
 
-function PurchaseSection({maxQuantity}) {
+function PurchaseSection({product, maxQuantity = 1 }) {
     
     const [quantity, setQuantity] = useState(1);
     
@@ -24,10 +25,8 @@ function PurchaseSection({maxQuantity}) {
                 <span><Heart /></span>
                 <span>wishlist</span>
             </div>
-            <div className="col-span-2">
-                <button className="bg-black text-white w-full border-black border-2 px-4 py-2 rounded-md cursor-pointer">
-                    Add to Cart
-                </button>
+            <div className="col-span-2" onClick={() => setQuantity(1)}>
+                <CartBtn product={product} quantity={quantity}/>
             </div> 
         </div>
     );

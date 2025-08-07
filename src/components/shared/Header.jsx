@@ -7,6 +7,8 @@ import logo from "../../assets/flower.png";
 import cartImage from "../../assets/shopping-cart_17641476.png";
 import mopileMenu from "../../assets/line_9694578.png";
 import { logout } from "../../store/authSlice"; 
+import ShoppingCart from '../../pages/ShoppingCart';
+import { clearCart } from '../../store/cartSlice';
 
 
 
@@ -15,6 +17,11 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogedIn = useSelector((state) => state.auth.isAuthenticated);
+  const cartItems = useSelector((state) => {
+    const items = state.cart.items;
+    return Object.values(items).reduce((total, item) => total + item.quantity, 0);
+  });
+  
 
   const handleLogout = () => {
     dispatch(logout()); // Clear Redux state
@@ -52,6 +59,7 @@ const Header = () => {
                 className="nav_link"
                 onClick={(e) => {
                   e.preventDefault(); // Prevent default link behavior
+                  dispatch(clearCart());
                   handleLogout();
                 }}
               >
@@ -67,9 +75,12 @@ const Header = () => {
         </nav>
 
         {/* Cart Icon */}
-        <Link to="/shopping">
-          <img src={cartImage} alt="Cart" width="60px" height="50px" />
-        </Link>
+        <div className="relative">
+        <button onClick={()=> isLogedIn ? navigate('/shopping-cart') : navigate('/login')} className="cart-icon">
+          <img src={cartImage} alt="Cart" width="60px" height="50px" className='cursor-pointer' />
+        </button>
+          <span className='absolute -top-2 -right-2 bg-[#e91e63] text-white text-sm min-w-[20px] h-[20px] rounded-full flex items-center justify-center px-1'>{cartItems||"0"}</span>
+        </div>
       </div>
     </header>
   );

@@ -21,7 +21,7 @@ function ProductDetails({ product }) {
                 >
                     {product.availabilityStatus}
                 </p>
-                <PurchaseSection maxQuantity={product.stock} />
+                <PurchaseSection maxQuantity={product.stock} product={product} />
                 <div>
                     <p className="text-[#6C7275]">SKU: <span className="text-black">{product.sku}</span></p>
                     <p className="text-[#6C7275]">Category: <span className="text-black">{product.category}</span></p>

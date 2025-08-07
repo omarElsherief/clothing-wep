@@ -62,7 +62,7 @@ function Category() {
     }
     return (
         <div className=" flex flex-col items-center justify-center ">
-            <select value={category} onChange={handleCategoryChange} className="p-2 border w-[40%] rounded text-center mt-10 mb-10 ">
+            <select value={category} onChange={handleCategoryChange} className="p-2  w-[40%] rounded shadow text-center mt-10 mb-10 ">
                 <option value="all">All Category</option>
                 <option value="mens">Mens</option>
                 <option value="mens-shoes">Mens Shoes</option>
