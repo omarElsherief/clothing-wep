@@ -30,19 +30,17 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div className="container">
+      <div className="header-container">
         {/* Logo */}
         <div className="icon">
-          <Link to="/">
+          <Link to="/" className=''>
             <img src={logo} width="40px" height="40px" alt="Logo" />
             <h1>FASHION</h1>
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="menu-btn" id="menu-btn">
-          <img src={mopileMenu} alt="menu button" />
-        </button>
+        
 
         {/* Navigation */}
         <nav className="nav" id="nav">
@@ -74,11 +72,18 @@ const Header = () => {
         </nav>
 
         {/* Cart Icon */}
-        <div className="relative">
-        <button onClick={()=> isLogedIn ? navigate('/shopping-cart') : navigate('/login')} className="cart-icon">
-          <img src={cartImage} alt="Cart" width="60px" height="50px" className='cursor-pointer' />
+        <div className='header-right '>
+          <button className="menu-btn" id="menu-btn" onClick={() => {
+          const nav = document.getElementById("nav");
+          nav.classList.toggle("active");
+        }}>
+          <img src={mopileMenu} alt="menu button" />
         </button>
-          <span className='absolute -top-2 -right-2 bg-[#e91e63] text-white text-sm min-w-[20px] h-[20px] rounded-full flex items-center justify-center px-1'>{isLogedIn?cartItems||"0":""}</span>
+          <div className='header-cart relative'>
+          <img src={cartImage} alt="Cart"  className='cursor-pointer ' onClick={() => isLogedIn ? navigate('/shopping-cart') : navigate('/login')} />
+          <span className='absolute -top-2 -right-2 bg-[#e91e63]  text-white text-sm min-w-[20px] h-[20px] rounded-full flex items-center justify-center px-1'>{isLogedIn?cartItems||"0":""}</span>
+          </div>
+        
         </div>
       </div>
     </header>

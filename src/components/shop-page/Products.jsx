@@ -1,9 +1,17 @@
+import { useEffect } from 'react';
 import Product from '../../pages/ProductPage';
 import CartBtn from '../shared/CartBtn';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function Products({ products }) {
-
+    const [dotInterval, setDotInterval] = useState("..");
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setDotInterval(prev => prev === ".." ? "..." : "..");
+        }, 300);
+        return () => clearInterval(interval);
+    })
 
     return (
         <div className="flex items-start justify-center flex-wrap gap-4">
@@ -20,7 +28,7 @@ function Products({ products }) {
                 </div>
                     );
             }):
-            <p>loading...</p>
+                    <p>loading{dotInterval}</p>
             }
         </div>
     );
