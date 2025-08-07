@@ -318,7 +318,7 @@ h2 {
 }
 
 .btn {
-  width: 120px;
+  width: fit-content;
   background-color: #f5627f;
   border: none;
   color: #fff;
@@ -381,9 +381,9 @@ h2 {
 }
 
 
-.icon {
+/* .icon {
   width: 40px;
-}
+} */
 
 .title {
   width: 130px;
