@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createHashRouter, RouterProvider } from "react-router-dom"
 import Categories from "./components/shop-page/Categories"
 import HomePage from "./pages/HomePage"
 import ProductPage from "./pages/ProductPage"
@@ -33,7 +33,7 @@ const routes = [
   { path: "/register", element: <Register /> },
     {path: "*", element: <p>404 Not Found</p>},  
 ]
-const router = createBrowserRouter(routes);
+const router = createHashRouter(routes);
 
 function App() {
   const dispatch = useDispatch();
