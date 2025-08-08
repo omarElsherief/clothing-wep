@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Categories from "./components/shop-page/Categories"
 import HomePage from "./pages/HomePage"
 import ProductPage from "./pages/ProductPage"
