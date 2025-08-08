@@ -41,10 +41,11 @@ const ShoppingCart = () => {
                 <li key={item.id} className="cart-item">
                   <img
                     src={item.thumbnail || 'https://via.placeholder.com/100'}
-                    alt={item.name}
+                    alt={item.name} onClick={() => navigate(`/product/${item.id}`)}
+                    className='item-img cursor-pointer'
                   />
                   <div className="info">
-                    <div>{item.name}</div>
+                    <div className='item-title'>{item.title}</div>
                     <div>${(item.price * item.quantity).toLocaleString()}</div>
                   </div>
 
