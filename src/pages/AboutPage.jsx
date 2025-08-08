@@ -19,7 +19,7 @@ const AboutPage = () => {
         <div className="hero-text">
           <h1>About US</h1>
           <h2>We Value Our Customers and Celebrate Style</h2>
-          <p>At YourBrandName, we blend fashion and comfort to help you
+          <p>At Fashion, we blend fashion and comfort to help you
             look and feel amazing every day. Our designs empower
             self-expression and confidence for everyone.</p>
         </div>
