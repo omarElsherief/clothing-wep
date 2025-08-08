@@ -274,7 +274,9 @@
     .container {
         border-radius: 15px;
     }
-    
+    .left-section {
+        display: none;
+    }
     .left-section,
     .right-section {
         padding: 20px;
@@ -288,3 +290,4 @@
         flex-wrap: wrap;
     }
 } 
+
