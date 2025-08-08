@@ -27,7 +27,6 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    dispatch(clearCart()); 
     navigate("/");
   };
 
