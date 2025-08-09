@@ -63,7 +63,7 @@ const Register = ({ onLoginClick }) => {
         />
         <FaUser className="icon" />
       </div>
-      {errors.username && <p className="error">{errors.username}</p>}
+      {errors.username && <p className="error text-red-500">{errors.username}</p>}
 
       <div className="input-box">
         <input
@@ -75,7 +75,7 @@ const Register = ({ onLoginClick }) => {
         />
         <FaEnvelope className="icon" />
       </div>
-      {errors.email && <p className="error">{errors.email}</p>}
+      {errors.email && <p className="error text-red-500">{errors.email}</p>}
 
       <div className="input-box">
         <input
@@ -87,7 +87,7 @@ const Register = ({ onLoginClick }) => {
         />
         <FaLock className="icon" />
       </div>
-      {errors.password && <p className="error">{errors.password}</p>}
+      {errors.password && <p className="error text-red-500">{errors.password}</p>}
 
       <div className="remember-forget">
         <label>
