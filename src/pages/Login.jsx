@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../store/authSlice';
 import { initializeCart } from '../store/cartSlice';
 import "./Login_register.css";
@@ -75,7 +75,11 @@ const Login = ({ onRegisterClick, onForgotPassword }) => {
       <div className="register-link">
         <p>
           Don't have an account?{' '}
-          <a href="#" onClick={onRegisterClick}>
+          <a href="" onClick={(e) => {
+            e.preventDefault();
+            onRegisterClick();
+          }
+          }>
             Register
           </a>
         </p>
